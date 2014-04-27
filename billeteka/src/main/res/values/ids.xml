@@ -10,4 +10,5 @@
     <item name="home_list_meses" type="id" />
     <item name="xxxx" type="id">xxxx</item>
     <item name="home_spinner" type="id">home_spinner</item>
+    <item name="list_lisresults_query" type="id">list_lisresults_query</item>
 </resources>
