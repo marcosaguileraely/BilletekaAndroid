@@ -7,4 +7,7 @@
     <item name="home_image_logo" type="id">home_image_logo</item>
     <item name="home_box_denominacion" type="id">home_box_denominacion</item>
     <item name="home_box_ano" type="id">home_box_ano</item>
+    <item name="home_list_meses" type="id" />
+    <item name="xxxx" type="id">xxxx</item>
+    <item name="home_spinner" type="id">home_spinner</item>
 </resources>
