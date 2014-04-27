@@ -4,4 +4,7 @@
     <item name="home_label_ano" type="id">home_label_ano</item>
     <item name="home_label_mes" type="id" />
     <item name="home_button_buscar" type="id">home_button_buscar</item>
+    <item name="home_image_logo" type="id">home_image_logo</item>
+    <item name="home_box_denominacion" type="id">home_box_denominacion</item>
+    <item name="home_box_ano" type="id">home_box_ano</item>
 </resources>
