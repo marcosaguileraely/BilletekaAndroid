@@ -11,4 +11,6 @@
     <item name="xxxx" type="id">xxxx</item>
     <item name="home_spinner" type="id">home_spinner</item>
     <item name="list_lisresults_query" type="id">list_lisresults_query</item>
+    <item name="list_query_button" type="id">list_query_button</item>
+    <item name="details_hello_world" type="id">details_hello_world</item>
 </resources>
