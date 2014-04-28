@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="list_lisresults_query" type="id">list_lisresults_query</item>
+    <item name="list_query_button" type="id">list_query_button</item>
+    <item name="details_hello_world" type="id">details_hello_world</item>
 </resources>
