@@ -106,5 +106,17 @@
         android:spinnerMode="dropdown"
         android:entries="@array/meses"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="paises"
+        android:id="@id/home_text_paises"
+        android:layout_above="@id/home_button_buscar"
+        android:layout_alignLeft="@id/home_button_buscar"
+        android:layout_alignStart="@id/home_button_buscar"
+        android:layout_marginBottom="22dp"
+        android:layout_alignRight="@id/home_button_buscar"
+        android:layout_alignEnd="@id/home_button_buscar" />
+
 
 </RelativeLayout>
