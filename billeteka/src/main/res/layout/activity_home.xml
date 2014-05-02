@@ -26,9 +26,23 @@
         android:layout_height="100dp"
         android:id="@id/home_image_logo"
         android:background="@drawable/billetekalog"
-        android:layout_marginTop="25dp"
         android:layout_below="@+id/frameLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Catálogo de billetes de Colombia 1923 - Hoy"
+        android:id="@id/home_subtitle"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_below="@id/home_image_logo"
+        android:layout_alignLeft="@id/home_label_ano"
+        android:layout_alignStart="@id/home_label_ano"
+        android:layout_alignRight="@id/home_box_denominacion"
+        android:layout_alignEnd="@id/home_box_denominacion" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,27 +50,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Denominación"
         android:id="@id/home_label_denominacion"
-        android:layout_below="@id/home_image_logo"
-        android:layout_alignLeft="@id/home_box_denominacion"
-        android:layout_alignStart="@id/home_box_denominacion"
-        android:layout_marginTop="33dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@id/home_box_denominacion"
-        android:layout_below="@id/home_label_denominacion"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Año"
-        android:id="@id/home_label_ano"
-        android:layout_below="@id/home_box_denominacion"
+        android:layout_above="@id/home_box_denominacion"
         android:layout_alignLeft="@id/home_box_denominacion"
         android:layout_alignStart="@id/home_box_denominacion" />
 
@@ -65,10 +59,28 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
+        android:id="@id/home_box_denominacion"
+        android:layout_above="@id/home_label_ano"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Año"
+        android:id="@id/home_label_ano"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@id/home_label_mes"
+        android:layout_alignEnd="@id/home_label_mes" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
         android:id="@id/home_box_ano"
         android:layout_below="@id/home_label_ano"
-        android:layout_alignLeft="@id/home_label_ano"
-        android:layout_alignStart="@id/home_label_ano" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,38 +97,26 @@
         android:layout_height="wrap_content"
         android:text="Buscar Billetes"
         android:id="@id/home_button_buscar"
-        android:layout_marginBottom="44dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
         android:background="#ff162542"
-        android:layout_alignRight="@id/home_box_ano"
-        android:layout_alignEnd="@id/home_box_ano"
-        android:layout_alignLeft="@id/home_label_mes"
-        android:layout_alignStart="@id/home_label_mes"
-        android:textColor="#fffffcf7" />
+        android:textColor="#fffffcf7"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@id/home_spinner"
+        android:layout_alignStart="@id/home_spinner"
+        android:layout_alignRight="@id/home_spinner"
+        android:layout_alignEnd="@id/home_spinner" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@id/home_spinner"
+        android:spinnerMode="dropdown"
+        android:entries="@array/meses"
         android:layout_below="@id/home_label_mes"
-        android:layout_alignLeft="@id/home_label_mes"
-        android:layout_alignStart="@id/home_label_mes"
         android:layout_alignRight="@id/home_box_ano"
         android:layout_alignEnd="@id/home_box_ano"
-        android:spinnerMode="dropdown"
-        android:entries="@array/meses"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="paises"
-        android:id="@id/home_text_paises"
-        android:layout_above="@id/home_button_buscar"
-        android:layout_alignLeft="@id/home_button_buscar"
-        android:layout_alignStart="@id/home_button_buscar"
-        android:layout_marginBottom="22dp"
-        android:layout_alignRight="@id/home_button_buscar"
-        android:layout_alignEnd="@id/home_button_buscar" />
+        android:layout_alignLeft="@id/home_label_mes"
+        android:layout_alignStart="@id/home_label_mes" />
 
 
 </RelativeLayout>

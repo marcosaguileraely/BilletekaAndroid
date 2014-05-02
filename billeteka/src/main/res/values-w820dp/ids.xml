@@ -4,4 +4,5 @@
     <item name="list_query_button" type="id">list_query_button</item>
     <item name="details_hello_world" type="id">details_hello_world</item>
     <item name="home_text_paises" type="id">home_text_paises</item>
+    <item name="home_subtitle" type="id">home_subtitle</item>
 </resources>
