@@ -5,4 +5,5 @@
     <item name="details_hello_world" type="id">details_hello_world</item>
     <item name="home_text_paises" type="id">home_text_paises</item>
     <item name="home_subtitle" type="id">home_subtitle</item>
+    <item name="home_spinner_denominacion" type="id">home_spinner_denominacion</item>
 </resources>

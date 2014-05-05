@@ -18,13 +18,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.cool4code.billeteka.ListActivity"
-            android:label="@string/title_activity_list"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name="com.cool4code.billeteka.DetailsActivity"
             android:label="@string/title_activity_details" >
+        </activity>
+        <activity
+            android:name="com.cool4code.billeteka.ListBillsActivity"
+            android:label="@string/title_activity_list_bills" >
         </activity>
     </application>
 
