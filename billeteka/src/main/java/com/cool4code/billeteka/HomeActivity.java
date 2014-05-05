@@ -2,7 +2,7 @@ package com.cool4code.billeteka;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
@@ -26,13 +26,15 @@ import java.util.List;
 
 public class HomeActivity extends Activity implements OnClickListener{
     private Spinner ourcolorspinner;
-    private String selection;
+    private Spinner denominacionspinner;
+    private EditText anoedittext;
+    private String selecciondenominacion;
+    private String selectionmes;
     private Button buscar;
-    final Context context = this;
-    String calorie = "gordito";
-    String protein = "flaquito";
+    String denominacion;
+    String ano;
+    String mes;
     List<ParseObject> ob;
-    TextView paises;
     ProgressDialog mProgressDialog;
     ProgressDialog barProgressDialog;
     private SQLiteDatabase mydb;
@@ -43,13 +45,13 @@ public class HomeActivity extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ourcolorspinner = (Spinner) findViewById(R.id.home_spinner);
+        denominacionspinner = (Spinner) findViewById(R.id.home_spinner_denominacion);
+        anoedittext= (EditText) findViewById(R.id.home_box_ano);
         buscar = (Button) findViewById(R.id.home_button_buscar);
-        paises= (TextView) findViewById(R.id.home_text_paises);
         buscar.setOnClickListener(this);
         listenerMethod();
 
         Parse.initialize(this, "mjtQePti6kho4ep0Kq6llUXBX6kd8ZtehD4uev7n", "gUegGvKeUqU1kzQnUeeW4vFUkOZlvulxxDdiB16p");
-        //Parse.initialize(this, "XdWuoWJKZ4rL1hv2lGfgB9IP4fy5po65xayBwwNW", "Ky1GlA3n4jiEnTTLreBjDzo94J5tLshdnZ9sDR1e");
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
@@ -162,29 +164,40 @@ public class HomeActivity extends Activity implements OnClickListener{
             mProgressDialog.dismiss();
         }
     }
-
     @Override
     public void onClick(View v) {
-        /*Intent goToListActivity= new Intent(HomeActivity.this, ListActivity.class);
-        goToListActivity.putExtra("CALORIE", calorie);
-        goToListActivity.putExtra("PROTEIN", protein);
+        Intent goToListActivity= new Intent(HomeActivity.this, ListBillsActivity.class);
+        denominacion= this.selecciondenominacion;
+        ano= anoedittext.getText().toString();
+        mes= this.selectionmes;
+        goToListActivity.putExtra("DENOMINACION", denominacion);
+        goToListActivity.putExtra("ANO", ano);
+        goToListActivity.putExtra("MES", mes);
         startActivity(goToListActivity);
-        Log.d("MyApp", "Yendo al listado--->");*/
+        Log.d("MyApp", "Yendo al listado--->");
     }
-
     private void listenerMethod() {
-        // TODO Auto-generated method stub
-        ourcolorspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
+        denominacionspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id){
-                selection = (String) parentView.getItemAtPosition(position);
-                Log.d("id", selection);
+                selecciondenominacion = (String) parentView.getItemAtPosition(position);
+                Log.d("id", selecciondenominacion);
                 //Toast.makeText(context, "You seleceted " + selection + ".", Toast.LENGTH_LONG).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView){
 
-            }});
+        }});
+        ourcolorspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id){
+                selectionmes = (String) parentView.getItemAtPosition(position);
+                Log.d("id", selectionmes);
+                //Toast.makeText(context, "You seleceted " + selection + ".", Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView){
+
+        }});
     }
 }

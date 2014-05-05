@@ -1,1 +1,1 @@
-objectId VARCHAR,dia VARCHAR,mes VARCHAR,ano VARCHAR,denominacion VARCHAR,serie VARCHAR,descripcion VARCHAR,tiempo VARCHAR,f1_4 VARCHAR,f5_7 VARCHAR,f8_10 VARCHAR,p1_4 VARCHAR,p5_7 VARCHAR,p8_10 VARCHAR,bernardom13 VARCHAR,createdAt VARCHAR,updatedAt VARCHAR
+objectId ,dia ,mes ,ano ,denominacion ,serie ,descripcion ,tiempo ,f1_4 ,f5_7 ,f8_10 ,p1_4 ,p5_7 ,p8_10 ,bernardom13 ,createdAt ,updatedAt 

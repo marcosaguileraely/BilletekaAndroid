@@ -6,5 +6,6 @@
     <string name="title_activity_list">Billeteka / Resultado</string>
     <string name="action_settings">About</string>
     <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_list_bills">Billeteka / Resultados</string>
 
 </resources>
