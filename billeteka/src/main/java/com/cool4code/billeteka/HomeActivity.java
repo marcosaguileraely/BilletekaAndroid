@@ -65,7 +65,7 @@ public class HomeActivity extends Activity implements OnClickListener{
             super.onPreExecute();
             mProgressDialog = new ProgressDialog(HomeActivity.this);
             mProgressDialog.setTitle("Billeteka");
-            mProgressDialog.setMessage("Estamos descargando datos. Solo unos segundos...");
+            mProgressDialog.setMessage("Estamos descargando datos. Esto tomará unos segundos...");
             mProgressDialog.setIndeterminate(false);
             mProgressDialog.show();
         }
@@ -161,7 +161,12 @@ public class HomeActivity extends Activity implements OnClickListener{
         }
         @Override
         protected void onPostExecute(Void result) {
+            SQLiteDatabase mydb = getBaseContext().openOrCreateDatabase("billsdb", SQLiteDatabase.OPEN_READWRITE, null);
+            String objectId, dia, mes, ano, denominacion, serie, descripcion, tiempo;
+            String f1_4, f5_7, f8_10, p1_4, p5_7, p8_10, bernardom13, createdAt, updatedAt;
             mProgressDialog.dismiss();
+            mydb.execSQL("update main.banknote set serie='' where serie='null'");
+            mydb.execSQL("update main.banknote set descripcion='' where descripcion='null'");
         }
     }
     @Override
@@ -170,11 +175,69 @@ public class HomeActivity extends Activity implements OnClickListener{
         denominacion= this.selecciondenominacion;
         ano= anoedittext.getText().toString();
         mes= this.selectionmes;
-        goToListActivity.putExtra("DENOMINACION", denominacion);
+
+        String denom_ = denominacionspinner.getSelectedItem().toString();
+        ano= anoedittext.getText().toString();
+        String mes_ = ourcolorspinner.getSelectedItem().toString();
+        Log.d("denominacion->", "-> "+denom_);
+        Log.d("ano->", "-> "+ano);
+        Log.d("mes->", "-> "+mes_);
+        if(!"Elija una...".equals(denom_) && !"".equals(ano) && !"Elija un mes...".equals(mes_)){
+          Log.d("condicion1->", "3 inputs ok!");
+          goToListActivity.putExtra("DENOMINACION", denominacion);
+          goToListActivity.putExtra("ANO", ano);
+          goToListActivity.putExtra("MES", mes);
+          startActivity(goToListActivity);
+        }
+        if(!"Elija una...".equals(denom_) && ano.equals("") && mes_.equals("Elija un mes...")){
+          Log.d("condicion2->", "solo denominacion ok!");
+          goToListActivity.putExtra("DENOMINACION", denominacion);
+          goToListActivity.putExtra("ANO", ano);
+          goToListActivity.putExtra("MES", mes);
+          startActivity(goToListActivity);
+          Log.d("MyApp", "Yendo al listado--->");
+        }
+        if(denom_.equals("Elija una...") && !"".equals(ano) && mes_.equals("Elija un mes...")){
+          Log.d("condicion3->", "solo año ok!");
+          goToListActivity.putExtra("DENOMINACION", denominacion);
+          goToListActivity.putExtra("ANO", ano);
+          goToListActivity.putExtra("MES", mes);
+          startActivity(goToListActivity);
+          Log.d("MyApp", "Yendo al listado--->");
+        }
+        if(denom_.equals("Elija una...") && ano.equals("") && !"Elija un mes...".equals(mes_)){
+          Log.d("condicion4->", "solo mes ok!");
+          goToListActivity.putExtra("DENOMINACION", denominacion);
+          goToListActivity.putExtra("ANO", ano);
+          goToListActivity.putExtra("MES", mes);
+          startActivity(goToListActivity);
+          Log.d("MyApp", "Yendo al listado--->");
+        }
+        if(denom_.equals("Elija una...") && !"".equals(ano) && !"Elija un mes...".equals(mes_)){
+          Log.d("condicion5->", "solo mes y año ok!");
+          goToListActivity.putExtra("DENOMINACION", denominacion);
+          goToListActivity.putExtra("ANO", ano);
+          goToListActivity.putExtra("MES", mes);
+          startActivity(goToListActivity);
+          Log.d("MyApp", "Yendo al listado--->");
+        }
+        if(!"Elija una...".equals(denom_) && ano.equals("") && !"Elija un mes...".equals(mes_)){
+          Log.d("condicion6->", "solo mes y denominacion ok!");
+          goToListActivity.putExtra("DENOMINACION", denominacion);
+          goToListActivity.putExtra("ANO", ano);
+          goToListActivity.putExtra("MES", mes);
+          startActivity(goToListActivity);
+          Log.d("MyApp", "Yendo al listado--->");
+        }
+
+
+       /* goToListActivity.putExtra("DENOMINACION", denominacion);
         goToListActivity.putExtra("ANO", ano);
         goToListActivity.putExtra("MES", mes);
         startActivity(goToListActivity);
-        Log.d("MyApp", "Yendo al listado--->");
+        Log.d("MyApp", "Yendo al listado--->");*/
+
+
     }
     private void listenerMethod() {
         denominacionspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){

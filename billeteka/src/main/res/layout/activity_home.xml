@@ -114,24 +114,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@id/home_spinner_denominacion"
-        android:layout_alignLeft="@id/home_label_denominacion"
-        android:layout_alignStart="@id/home_label_denominacion"
         android:layout_below="@id/home_label_denominacion"
         android:layout_above="@id/home_label_ano"
         android:spinnerMode="dropdown"
         android:entries="@array/denominacioneslist"
-        android:layout_alignRight="@id/home_image_logo"
-        android:layout_alignEnd="@id/home_image_logo" />
+        android:layout_alignLeft="@id/home_label_ano"
+        android:layout_alignStart="@id/home_label_ano"
+        android:layout_toLeftOf="@+id/textView" />
 
-    <ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Peso(s)"
+        android:id="@+id/textView"
         android:layout_alignBottom="@id/home_spinner_denominacion"
-        android:layout_toRightOf="@id/home_spinner_denominacion"
-        android:layout_alignTop="@id/home_spinner_denominacion"
         android:layout_alignRight="@id/home_box_ano"
-        android:layout_alignEnd="@id/home_box_ano"
-        android:src="@drawable/icon_13792" />
+        android:layout_alignEnd="@id/home_box_ano" />
 
 </RelativeLayout>

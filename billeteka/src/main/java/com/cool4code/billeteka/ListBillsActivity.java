@@ -52,31 +52,141 @@ public class ListBillsActivity extends ActionBarActivity {
 
     private ArrayList<BillsBean> generateData(){
         ArrayList<BillsBean> items = new ArrayList<BillsBean>();
-        /*Sqlite query*/
         SQLiteDatabase mydb = getBaseContext().openOrCreateDatabase("billsdb", SQLiteDatabase.OPEN_READWRITE, null);
-//        Cursor c= mydb.rawQuery("SELECT * FROM banknote WHERE denominacion = '"+ var_denominacion+"'AND ano='"+ var_ano+"'AND mes='"+var_mes+"'", null);
-        Cursor c= mydb.rawQuery("SELECT * FROM banknote WHERE mes = '"+var_mes+"'", null);
-        int _count= c.getCount();
-        Log.d("count", "registros encontrados-->"+_count);
-        Toast.makeText(context, "Hemos encontrado "+_count+" resultados.", Toast.LENGTH_LONG).show();
-        if(c.moveToNext()){
-            do {
-                _idparse= c.getString(0);
-                _dia= c.getString(1);
-                _mes= c.getString(2);
-                _ano= c.getString(3);
-                _denominacion= c.getString(4);
-                _descripcion= c.getString(6);
-                _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
-                Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
-                items.add(new BillsBean(_descripcion, _complete));
-            }while(c.moveToNext());
+        //3 elementos: denominacion + año + mes
+        if(!"Elija una...".equals(var_denominacion) && !"".equals(var_ano) && !"Elija un mes...".equals(var_mes)){
+            Log.d("modo:", "===> 3 inputs");
+            Cursor c= mydb.rawQuery("SELECT * FROM banknote WHERE denominacion = '"+ var_denominacion+"'AND ano='"+ var_ano+"'AND mes='"+var_mes+"'", null);
+            int _count= c.getCount();
+            Log.d("count", "registros encontrados-->"+_count);
+            Toast.makeText(context, "Hemos encontrado "+_count+" resultados.", Toast.LENGTH_LONG).show();
+            if(c.moveToNext()){
+                do {
+                    _idparse= c.getString(0);
+                    _dia= c.getString(1);
+                    _mes= c.getString(2);
+                    _ano= c.getString(3);
+                    _denominacion= c.getString(4);
+                    _descripcion= c.getString(6);
+                    _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
+                    items.add(new BillsBean(_descripcion, _complete));
+                }while(c.moveToNext());
+            }
+            c.close();
         }
-        c.close();
+        //solo denominacion
+        if(!"Elija una...".equals(var_denominacion) && var_ano.equals("") && var_mes.equals("Elija un mes...")){
+            Log.d("modo:", "===> Solo denominacion");
+            Cursor c= mydb.rawQuery("SELECT * FROM banknote WHERE denominacion = '"+var_denominacion+"'", null);
+            int _count= c.getCount();
+            Log.d("count", "registros encontrados-->"+_count);
+            Toast.makeText(context, "Hemos encontrado "+_count+" resultados.", Toast.LENGTH_LONG).show();
+            if(c.moveToNext()){
+                do {
+                    _idparse= c.getString(0);
+                    _dia= c.getString(1);
+                    _mes= c.getString(2);
+                    _ano= c.getString(3);
+                    _denominacion= c.getString(4);
+                    _descripcion= c.getString(6);
+                    _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
+                    items.add(new BillsBean(_descripcion, _complete));
+                }while(c.moveToNext());
+            }
+            c.close();
+        }
+        //solo año
+        if(var_denominacion.equals("Elija una...") && !"".equals(var_ano) && var_mes.equals("Elija un mes...")){
+            Log.d("modo:", "===> Solo año");
+            Cursor c= mydb.rawQuery("SELECT * FROM banknote WHERE ano = '"+var_ano+"'", null);
+            int _count= c.getCount();
+            Log.d("count", "registros encontrados-->"+_count);
+            Toast.makeText(context, "Hemos encontrado "+_count+" resultados.", Toast.LENGTH_LONG).show();
+            if(c.moveToNext()){
+                do {
+                    _idparse= c.getString(0);
+                    _dia= c.getString(1);
+                    _mes= c.getString(2);
+                    _ano= c.getString(3);
+                    _denominacion= c.getString(4);
+                    _descripcion= c.getString(6);
+                    _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
+                    items.add(new BillsBean(_descripcion, _complete));
+                }while(c.moveToNext());
+            }
+            c.close();
+        }
+        // solo mes
+        if(var_denominacion.equals("Elija una...") && var_ano.equals("") && !"Elija un mes...".equals(var_mes)){
+            Log.d("modo:", "===> Solo mes");
+            Cursor c= mydb.rawQuery("SELECT * FROM banknote WHERE mes = '"+var_mes+"'", null);
+            int _count= c.getCount();
+            Log.d("count", "registros encontrados-->"+_count);
+            Toast.makeText(context, "Hemos encontrado "+_count+" resultados.", Toast.LENGTH_LONG).show();
+            if(c.moveToNext()){
+                do {
+                    _idparse= c.getString(0);
+                    _dia= c.getString(1);
+                    _mes= c.getString(2);
+                    _ano= c.getString(3);
+                    _denominacion= c.getString(4);
+                    _descripcion= c.getString(6);
+                    _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
+                    items.add(new BillsBean(_descripcion, _complete));
+                }while(c.moveToNext());
+            }
+            c.close();
+        }
+        // 2 elementos: año + mes
+        if(var_denominacion.equals("Elija una...") && !"".equals(var_ano) && !"Elija un mes...".equals(var_mes)){
+            Log.d("modo:", "===> Solo mes");
+            Cursor c= mydb.rawQuery("SELECT * FROM banknote WHERE ano='"+ var_ano+"'AND mes='"+var_mes+"'", null);
+            int _count= c.getCount();
+            Log.d("count", "registros encontrados-->"+_count);
+            Toast.makeText(context, "Hemos encontrado "+_count+" resultados.", Toast.LENGTH_LONG).show();
+            if(c.moveToNext()){
+                do {
+                    _idparse= c.getString(0);
+                    _dia= c.getString(1);
+                    _mes= c.getString(2);
+                    _ano= c.getString(3);
+                    _denominacion= c.getString(4);
+                    _descripcion= c.getString(6);
+                    _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
+                    items.add(new BillsBean(_descripcion, _complete));
+                }while(c.moveToNext());
+            }
+            c.close();
+        }
+        // 2 elementos: denominacion + mes
+        if(!"Elija una...".equals(var_denominacion) && var_ano.equals("") && !"Elija un mes...".equals(var_mes)){
+            Log.d("modo:", "===> Solo mes");
+            Cursor c= mydb.rawQuery("SELECT * FROM banknote WHERE denominacion = '"+var_denominacion+"'AND mes='"+var_mes+"'", null);
+            int _count= c.getCount();
+            Log.d("count", "registros encontrados-->"+_count);
+            Toast.makeText(context, "Hemos encontrado "+_count+" resultados.", Toast.LENGTH_LONG).show();
+            if(c.moveToNext()){
+                do {
+                    _idparse= c.getString(0);
+                    _dia= c.getString(1);
+                    _mes= c.getString(2);
+                    _ano= c.getString(3);
+                    _denominacion= c.getString(4);
+                    _descripcion= c.getString(6);
+                    _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
+                    items.add(new BillsBean(_descripcion, _complete));
+                }while(c.moveToNext());
+            }
+            c.close();
+        }
         return items;
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
