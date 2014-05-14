@@ -229,15 +229,11 @@ public class HomeActivity extends Activity implements OnClickListener{
           startActivity(goToListActivity);
           Log.d("MyApp", "Yendo al listado--->");
         }
-
-
        /* goToListActivity.putExtra("DENOMINACION", denominacion);
         goToListActivity.putExtra("ANO", ano);
         goToListActivity.putExtra("MES", mes);
         startActivity(goToListActivity);
         Log.d("MyApp", "Yendo al listado--->");*/
-
-
     }
     private void listenerMethod() {
         denominacionspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
