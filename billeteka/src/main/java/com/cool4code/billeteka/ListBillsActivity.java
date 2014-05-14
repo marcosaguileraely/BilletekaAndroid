@@ -8,7 +8,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,7 +29,9 @@ public class ListBillsActivity extends ActionBarActivity {
     String _denominacion;
     String _descripcion;
     String _complete;
+    ListView listView;
     final Context context = this;
+    String idregistro;
 
     ArrayList<BillsBean> lista= new ArrayList<BillsBean>();
     BillsBean bills;
@@ -35,7 +40,27 @@ public class ListBillsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_bills);
-        ListView listView = (ListView) findViewById(R.id.listview);
+        listView = (ListView) findViewById(R.id.listview);
+        listView.setClickable(true);
+        listenerMethod();
+        //ListView listView = (ListView) findViewById(R.id.listview);
+
+        /*tabhost*/
+        TabHost tabs=(TabHost)findViewById(android.R.id.tabhost);
+        tabs.setup();
+
+        TabHost.TabSpec spec= tabs.newTabSpec("mitab1");
+        spec.setContent(R.id.tab1);
+        spec.setIndicator("BILLETES");
+        tabs.addTab(spec);
+
+        spec=tabs.newTabSpec("mitab2");
+        spec.setContent(R.id.tab2);
+        spec.setIndicator("DETALLES");
+        tabs.addTab(spec);
+
+        tabs.setCurrentTab(0);
+
         /*Intent getting data*/
         Bundle dataFromHomeActivity= getIntent().getExtras();
         if(dataFromHomeActivity != null){
@@ -46,8 +71,16 @@ public class ListBillsActivity extends ActionBarActivity {
             Log.d("MyApp", "año-> "+ var_ano);
             Log.d("MyApp", "mes-> "+ var_mes);
         }
+
         MyAdapter adapter = new MyAdapter(this, generateData());
         listView.setAdapter(adapter);
+
+        tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                Log.i("AndroidTabsAction>>", "Pulsada pestaña: " + tabId);
+            }
+        });
     }
 
     private ArrayList<BillsBean> generateData(){
@@ -204,5 +237,22 @@ public class ListBillsActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void listenerMethod() {
+        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                idregistro = (String) parentView.getItemAtPosition(position);
+                Log.d("id", idregistro);
+                //Toast.makeText(context, "You seleceted " + selection + ".", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
     }
 }
