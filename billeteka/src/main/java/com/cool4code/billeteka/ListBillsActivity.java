@@ -41,6 +41,12 @@ public class ListBillsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_bills);
         listView = (ListView) findViewById(R.id.listview);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("Pls work!", "->"+listView.getItemAtPosition(position));
+            }
+        });
         listView.setClickable(true);
         listenerMethod();
         //ListView listView = (ListView) findViewById(R.id.listview);
