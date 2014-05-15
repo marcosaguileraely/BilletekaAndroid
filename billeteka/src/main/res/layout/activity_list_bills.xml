@@ -33,8 +33,13 @@
 
                     <TextView android:id="@+id/textView1"
                         android:text="Resultado de tu busqueda"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#ff162542"
+                        android:textColor="#ffffffff" />
 
                     <ListView
                         android:id="@+id/listview"
@@ -50,9 +55,14 @@
                     android:layout_height="match_parent" >
 
                     <TextView android:id="@+id/textView2"
-                        android:text="Detalle del Billete"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="Detalles del Billete"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#ff162542"
+                        android:textColor="#ffffffff"/>
                 </LinearLayout>
 
             </FrameLayout>
