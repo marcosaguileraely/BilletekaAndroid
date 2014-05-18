@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,12 +29,15 @@ public class ListBillsActivity extends ActionBarActivity {
     String _ano;
     String _denominacion;
     String _descripcion;
+    String _serie;
     String _complete;
+    String _completeDescription;
     ListView listView;
     final Context context = this;
     String idregistro;
     String _uniqueIdParse;
     TabHost tabs;
+    TextView header_details;
 
     ArrayList<BillsBean> lista= new ArrayList<BillsBean>();
     BillsBean bills;
@@ -43,6 +47,7 @@ public class ListBillsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_bills);
         listView = (ListView) findViewById(R.id.listview);
+        header_details= (TextView) findViewById(R.id.detalles_texto1);
         listView.setClickable(true);
 
         /*tabhost*/
@@ -103,7 +108,8 @@ public class ListBillsActivity extends ActionBarActivity {
                         _ano= detailsCursor.getString(3);
                         _denominacion= detailsCursor.getString(4);
                         _descripcion= detailsCursor.getString(6);
-                        _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                        _complete= _denominacion+" Peso(s)"+" "+_dia+" de "+_mes+" de "+_ano;
+                        header_details.setText(_complete);
                     }while(detailsCursor.moveToNext());
                 }
                 detailsCursor.close();
@@ -129,10 +135,12 @@ public class ListBillsActivity extends ActionBarActivity {
                     _mes= c.getString(2);
                     _ano= c.getString(3);
                     _denominacion= c.getString(4);
+                    _serie= c.getString(5);
                     _descripcion= c.getString(6);
                     _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    _completeDescription= _descripcion+"\nSerie "+_serie;
                     Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
-                    items.add(new BillsBean(_idparse, _descripcion, _complete));
+                    items.add(new BillsBean(_idparse, _completeDescription, _complete));
                 }while(c.moveToNext());
             }
             c.close();
@@ -151,10 +159,12 @@ public class ListBillsActivity extends ActionBarActivity {
                     _mes= c.getString(2);
                     _ano= c.getString(3);
                     _denominacion= c.getString(4);
+                    _serie= c.getString(5);
                     _descripcion= c.getString(6);
                     _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    _completeDescription= _descripcion+"\nSerie "+_serie;
                     Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
-                    items.add(new BillsBean(_idparse, _descripcion, _complete));
+                    items.add(new BillsBean(_idparse, _completeDescription, _complete));
                 }while(c.moveToNext());
             }
             c.close();
@@ -173,10 +183,12 @@ public class ListBillsActivity extends ActionBarActivity {
                     _mes= c.getString(2);
                     _ano= c.getString(3);
                     _denominacion= c.getString(4);
+                    _serie= c.getString(5);
                     _descripcion= c.getString(6);
                     _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    _completeDescription= _descripcion+"\nSerie "+_serie;
                     Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
-                    items.add(new BillsBean(_idparse, _descripcion, _complete));
+                    items.add(new BillsBean(_idparse, _completeDescription, _complete));
                 }while(c.moveToNext());
             }
             c.close();
@@ -195,8 +207,10 @@ public class ListBillsActivity extends ActionBarActivity {
                     _mes= c.getString(2);
                     _ano= c.getString(3);
                     _denominacion= c.getString(4);
+                    _serie= c.getString(5);
                     _descripcion= c.getString(6);
                     _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    _completeDescription= _descripcion+"\nSerie "+_serie;
                     Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
                     items.add(new BillsBean(_idparse, _descripcion, _complete));
                 }while(c.moveToNext());
@@ -217,10 +231,12 @@ public class ListBillsActivity extends ActionBarActivity {
                     _mes= c.getString(2);
                     _ano= c.getString(3);
                     _denominacion= c.getString(4);
+                    _serie= c.getString(5);
                     _descripcion= c.getString(6);
                     _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    _completeDescription= _descripcion+"\nSerie "+_serie;
                     Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
-                    items.add(new BillsBean(_idparse, _descripcion, _complete));
+                    items.add(new BillsBean(_idparse, _completeDescription, _complete));
                 }while(c.moveToNext());
             }
             c.close();
@@ -239,10 +255,12 @@ public class ListBillsActivity extends ActionBarActivity {
                     _mes= c.getString(2);
                     _ano= c.getString(3);
                     _denominacion= c.getString(4);
+                    _serie= c.getString(5);
                     _descripcion= c.getString(6);
                     _complete= _denominacion+" Peso(s)"+"\n"+_dia+" de "+_mes+" de "+_ano;
+                    _completeDescription= _descripcion+"\nSerie "+_serie;
                     Log.d("db", "query -->"+_idparse+" - "+_dia+" - "+_mes+" - "+_ano+" - "+_denominacion+" - "+_descripcion);
-                    items.add(new BillsBean(_idparse, _descripcion, _complete));
+                    items.add(new BillsBean(_idparse, _completeDescription, _complete));
                 }while(c.moveToNext());
             }
             c.close();

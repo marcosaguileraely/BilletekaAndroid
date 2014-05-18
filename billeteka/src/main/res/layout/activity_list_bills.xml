@@ -65,10 +65,10 @@
                         android:textColor="#ffffffff"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="New Text"
-                        android:id="@+id/textView" />
+                        android:id="@id/detalles_texto1"
+                        android:layout_marginTop="20dp" />
 
 
                 </LinearLayout>
