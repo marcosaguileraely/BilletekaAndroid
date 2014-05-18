@@ -2,6 +2,7 @@ package com.cool4code.billeteka;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
@@ -39,6 +41,7 @@ public class HomeActivity extends Activity implements OnClickListener{
     ProgressDialog barProgressDialog;
     private SQLiteDatabase mydb;
     int queryLimit= 1000;
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,44 +81,6 @@ public class HomeActivity extends Activity implements OnClickListener{
             if(db.exists()){
             Log.d("->", "Existe db");
             Log.d("->", "¡NOTHING TO-DO HERE!");
-            //mydb = this.openOrCreateDatabase("billsdb", MODE_PRIVATE, null);
-            /*SQLiteDatabase mydb = getBaseContext().openOrCreateDatabase("billsdb", SQLiteDatabase.OPEN_READWRITE, null);
-            mydb.execSQL("CREATE TABLE IF NOT EXISTS "+ "banknote" + "(objectId VARCHAR,dia VARCHAR,mes VARCHAR,ano VARCHAR,denominacion VARCHAR,serie VARCHAR,descripcion VARCHAR,tiempo VARCHAR,f1_4 VARCHAR,f5_7 VARCHAR,f8_10 VARCHAR,p1_4 VARCHAR,p5_7 VARCHAR,p8_10 VARCHAR,bernardom13 VARCHAR,createdAt VARCHAR,updatedAt VARCHAR);");
-            mydb.execSQL("DELETE FROM banknote");
-            try {
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("billeteca2014");
-                query.setLimit(queryLimit); // limit to at most 10 results
-                ob = query.find();
-                size= ob.size();
-                Log.d("Accion"," total: "+size);
-                String descriptions = null;
-                String all= null;
-                for (ParseObject bills : ob) {
-                    objectId= bills.getObjectId();
-                    dia = bills.getString("dia");
-                    mes = bills.getString("mes");
-                    ano = bills.getString("ano");
-                    denominacion = bills.getString("denominacion");
-                    serie = bills.getString("serie");
-                    descripcion = bills.getString("descripcion");
-                    tiempo = bills.getString("tiempo");
-                    f1_4 = bills.getString("f1_4");
-                    f5_7 = bills.getString("f5_7");
-                    f8_10 = bills.getString("f8_10");
-                    p1_4 = bills.getString("p1_4");
-                    p5_7 = bills.getString("p5_7");
-                    p8_10 = bills.getString("p8_10");
-                    bernardom13 = bills.getString("bernardom13");
-                    createdAt = bills.getString("createdAt");
-                    updatedAt = bills.getString("updatedAt");
-                    Log.d("Accion","-> "+size+" - "+objectId+" - "+size--);
-                    mydb.execSQL("INSERT INTO banknote"+"(objectId, dia, mes, ano, denominacion, serie, descripcion, tiempo, f1_4, f5_7, f8_10, p1_4, p5_7, p8_10, bernardom13, createdAt, updatedAt)"+
-                                 "VALUES ('"+objectId+"','"+dia+"','"+mes+"','"+ano+"','"+denominacion+"','"+serie+"','"+descripcion+"','"+tiempo+"','"+f1_4+"','"+f5_7+"','"+f8_10+"','"+p1_4+"','"+p5_7+"','"+p8_10+"','"+bernardom13+"','"+createdAt+"','"+updatedAt+"');");
-                }
-            } catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }*/
             }else{
                 Log.d("->", "No Existe db");
                 SQLiteDatabase mydb = getBaseContext().openOrCreateDatabase("billsdb", SQLiteDatabase.OPEN_READWRITE, null);
@@ -229,11 +194,18 @@ public class HomeActivity extends Activity implements OnClickListener{
           startActivity(goToListActivity);
           Log.d("MyApp", "Yendo al listado--->");
         }
-       /* goToListActivity.putExtra("DENOMINACION", denominacion);
-        goToListActivity.putExtra("ANO", ano);
-        goToListActivity.putExtra("MES", mes);
-        startActivity(goToListActivity);
-        Log.d("MyApp", "Yendo al listado--->");*/
+        if(!"Elija una...".equals(denom_) && !"".equals(ano)  && mes_.equals("Elija un mes...")){
+          Log.d("condicion6->", "solo año y denominacion ok!");
+          goToListActivity.putExtra("DENOMINACION", denominacion);
+          goToListActivity.putExtra("ANO", ano);
+          goToListActivity.putExtra("MES", mes);
+          startActivity(goToListActivity);
+          Log.d("MyApp", "Yendo al listado--->");
+        }
+        if(denom_.equals("Elija una...") && ano.equals("") && mes_.equals("Elija un mes...")){
+            Log.d("condicion2->", "mensaje toast ok!");
+            Toast.makeText(context, "Selecciona o ingresa un valor de busqueda.", Toast.LENGTH_LONG).show();
+        }
     }
     private void listenerMethod() {
         denominacionspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
