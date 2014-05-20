@@ -24,8 +24,21 @@
         <activity
             android:name="com.cool4code.billeteka.ListBillsActivity"
             android:label="@string/title_activity_list_bills"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.cool4code.billeteka.IntroActivity"
+            android:label="@string/title_activity_intro" >
+        </activity>
+
+        <service android:name="com.parse.PushService" />
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

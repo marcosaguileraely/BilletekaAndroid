@@ -18,10 +18,13 @@ import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseAnalytics;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.PushService;
 
 import java.io.File;
 import java.util.List;
@@ -59,6 +62,13 @@ public class HomeActivity extends Activity implements OnClickListener{
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
+
+        // To track statistics around application
+        ParseAnalytics.trackAppOpened(getIntent());
+
+        // inform the Parse Cloud that it is ready for notifications
+        PushService.setDefaultPushCallback(this, HomeActivity.class);
+        ParseInstallation.getCurrentInstallation().saveInBackground();
         new RemoteDataTask().execute();
     }
     // RemoteDataTask AsyncTask
