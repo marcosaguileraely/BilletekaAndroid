@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cool4code.billeteka.IntroActivity"
+    android:background="@drawable/poporo">
+
+    <ScrollView
+        android:id="@+id/fontArtCategories"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#8555"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:fillViewport="false">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/intro_title"
+                android:layout_width="fill_parent"
+                android:layout_height="75dp"
+                android:layout_margin="3dp"
+                android:text="Bienvenido a BILLETEKA"
+                android:textColor="#FDFDFD"
+                android:textSize="28dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:id="@+id/intro_long_text"
+                android:layout_width="265dp"
+                android:layout_height="match_parent"
+                android:text="Esta aplicación está diseñada para que usted pueda buscar el precio de los billetes de Colombia desde 1923 hasta hoy según su denominación, fecha de emisión y tipo. Los precios de los billetes se muestran con base en su estado de conservación que aquí llamamos “calificación” en una escala de 1 a 10. La calificación más alta es 10, que significa que el billete no ha sido circulado (está completamente nuevo) y la más baja es 1, que significa que el billete ha sido usado, está muy sucio y rasgado.\n\nEsperamos que disfrute aprender, negociar y coleccionar billetes de Colombia, un país rico en colores e historia."
+                android:textColor="#FDFDFD"
+                android:textSize="14dp"
+                android:background="#555"
+                android:alpha="0.8"
+                android:padding="5dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Iniciar"
+        android:id="@+id/intro_button_goto_home"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#ffffffff" />
+
+
+</RelativeLayout>

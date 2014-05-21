@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="action_settings">About</string>
+    <string name="app_name">Billeteka</string>
+    <string name="title_activity_details">Banknotes details</string>
+    <string name="title_activity_intro">Billeteka</string>
+    <string name="title_activity_list">Banknote results</string>
+    <string name="title_activity_list_bills">Banknote results</string>
+
+</resources>
