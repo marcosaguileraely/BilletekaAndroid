@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -20,11 +22,9 @@ import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.PushService;
 
 import java.io.File;
 import java.util.List;
@@ -45,6 +45,7 @@ public class HomeActivity extends Activity implements OnClickListener{
     private SQLiteDatabase mydb;
     int queryLimit= 1000;
     final Context context = this;
+    int entry_value=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +68,17 @@ public class HomeActivity extends Activity implements OnClickListener{
         ParseAnalytics.trackAppOpened(getIntent());
 
         // inform the Parse Cloud that it is ready for notifications
+        /*PushService.setDefaultPushCallback(this, HomeActivity.class);
+        ParseInstallation.getCurrentInstallation().getInstallationId();
+        ParseInstallation.getCurrentInstallation().saveInBackground();*/
+
+        /*String  android_id = Secure.getString(getApplicationContext().getContentResolver(),Secure.ANDROID_ID);
+        Log.e("LOG","android id >>" + android_id);
         PushService.setDefaultPushCallback(this, HomeActivity.class);
-        ParseInstallation.getCurrentInstallation().saveInBackground();
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        installation.put("UniqueId",android_id);
+        installation.saveInBackground();*/
+
         new RemoteDataTask().execute();
     }
     // RemoteDataTask AsyncTask
@@ -98,6 +108,11 @@ public class HomeActivity extends Activity implements OnClickListener{
                 Log.d("->", "billsdb Creada");
                 mydb.execSQL("CREATE TABLE IF NOT EXISTS "+ "banknote" + "(objectId VARCHAR,dia VARCHAR,mes VARCHAR,ano VARCHAR,denominacion VARCHAR,serie VARCHAR,descripcion VARCHAR,tiempo VARCHAR,f1_4 VARCHAR,f5_7 VARCHAR,f8_10 VARCHAR,p1_4 VARCHAR,p5_7 VARCHAR,p8_10 VARCHAR,bernardom13 VARCHAR,createdAt VARCHAR,updatedAt VARCHAR);");
                 Log.d("->", "tabla banknote creada");
+                mydb.execSQL("CREATE TABLE IF NOT EXISTS "+ "firstime" + "(entry VARCHAR);");
+                Log.d("->", "tabla firstime creada");
+                //mydb.execSQL("insert into firstime "+("entry")+" values('Yes');");
+                mydb.execSQL("INSERT INTO firstime"+"(entry)"+
+                             "VALUES ('"+entry_value+"');");
                 try {
                     Log.d("MyApp", "Iniciando busqueda! ->");
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("billeteca2014");
@@ -240,5 +255,54 @@ public class HomeActivity extends Activity implements OnClickListener{
             public void onNothingSelected(AdapterView<?> parentView){
 
         }});
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        /*// Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);*/
+        switch (item.getItemId()) {
+            case R.id.home_action_book:
+
+                Log.d("acerca-de", "Ha presionado librito");
+
+                return true;
+
+            case R.id.home_action_reset:
+                Log.d("acerca-de", "Ha presionado restablecer");
+                ourcolorspinner.setSelection(0);
+                denominacionspinner.setSelection(0);
+                anoedittext.setText("");
+                return true;
+
+            case R.id.home_action_helpus:
+                Log.d("report", "Ha presionado reportar");
+
+                // DO SOMETHING HERE
+
+                return true;
+
+            case R.id.home_action_about:
+
+                Log.d("acerca-de", "Ha presionado acerca de...");
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
