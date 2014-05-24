@@ -5,6 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.cool4code.billeteka.HomeActivity" >
 
+    <item android:id="@+id/home_action_helpus"
+        android:icon="@drawable/ic_action_send_now"
+        android:title="@string/home_action_helpus"
+        android:showAsAction="ifRoom" />
+
     <item android:id="@+id/home_action_reset"
         android:icon="@drawable/ic_action_discard"
         android:title="@string/home_action_reset"
@@ -14,10 +19,7 @@
         android:title="@string/home_action_book"
         android:orderInCategory="100"
         app:showAsAction="never" />
-    <item android:id="@+id/home_action_helpus"
-        android:title="@string/home_action_helpus"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+
     <item android:id="@+id/home_action_about"
         android:title="@string/home_action_settings"
         android:orderInCategory="100"

@@ -22,7 +22,8 @@
         android:background="@drawable/billetekalog"
         android:layout_below="@+id/frameLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp" />
+        android:layout_marginTop="21dp"
+        android:baselineAlignBottom="true" />
 
     <TextView
         android:layout_width="fill_parent"
