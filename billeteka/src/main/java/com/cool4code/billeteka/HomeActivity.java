@@ -266,19 +266,11 @@ public class HomeActivity extends Activity implements OnClickListener{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /*// Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);*/
         switch (item.getItemId()) {
             case R.id.home_action_book:
-
                 Log.d("acerca-de", "Ha presionado librito");
-
+                Intent goToAds= new Intent(HomeActivity.this, AdsActivity.class);
+                startActivity(goToAds);
                 return true;
 
             case R.id.home_action_reset:
@@ -286,23 +278,26 @@ public class HomeActivity extends Activity implements OnClickListener{
                 ourcolorspinner.setSelection(0);
                 denominacionspinner.setSelection(0);
                 anoedittext.setText("");
+                Toast.makeText(context, "Campos restablecidos.", Toast.LENGTH_LONG).show();
                 return true;
 
             case R.id.home_action_helpus:
                 Log.d("report", "Ha presionado reportar");
-
-                // DO SOMETHING HERE
-
                 return true;
 
             case R.id.home_action_about:
-
                 Log.d("acerca-de", "Ha presionado acerca de...");
-
+                Intent goToAbout= new Intent(HomeActivity.this, AboutActivity.class);
+                startActivity(goToAbout);
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }
