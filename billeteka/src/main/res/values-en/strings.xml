@@ -7,4 +7,6 @@
     <string name="title_activity_list">Banknote results</string>
     <string name="title_activity_list_bills">Banknote results</string>
 
-</resources>
+<<string name="home_action_book">Banknote books</string><string name="home_action_helpus">Feedback</string><string name="title_activity_about">About us</string><string name="title_activity_ads">Ads and Recomendations</string><string name="title_activity_feedback">Feedback</string>
+
+esources>
