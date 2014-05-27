@@ -35,4 +35,23 @@
         <item>20000</item>
         <item>50000</item>
     </string-array>
+    <string-array name="feedbacklist">
+        <item>Elije un tipo...</item>
+        <item>Sugerencia - Uso de la aplicación</item>
+        <item>Sugerencia - Diseño y elementos gráficos</item>
+        <item>Sugerencia - Información </item>
+        <item>Sugerencia - Presentación de información</item>
+        <item>Sugerencia - Otro</item>
+        <item>Problema - Al abrir la aplicación</item>
+        <item>Problema - Descarga de datos</item>
+        <item>Problema - Visualización de datos</item>
+        <item>Problema - Resolución y diseño</item>
+        <item>Problema - Cierres repetitivo</item>
+        <item>Problema - Otro</item>
+        <item>Experiencia - 5 Excelente</item>
+        <item>Experiencia - 4 Bueno</item>
+        <item>Experiencia - 3 Regular</item>
+        <item>Experiencia - 2 Malo</item>
+        <item>Experiencia - 1 Muy malo</item>
+    </string-array>
 </resources>

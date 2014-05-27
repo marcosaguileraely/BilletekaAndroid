@@ -8,7 +8,6 @@
     <item name="home_box_denominacion" type="id">home_box_denominacion</item>
     <item name="home_box_ano" type="id">home_box_ano</item>
     <item name="home_list_meses" type="id" />
-    <item name="xxxx" type="id">xxxx</item>
     <item name="home_spinner" type="id">home_spinner</item>
     <item name="list_lisresults_query" type="id">list_lisresults_query</item>
     <item name="list_query_button" type="id">list_query_button</item>

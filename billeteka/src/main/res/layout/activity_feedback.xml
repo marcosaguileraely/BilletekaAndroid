@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.cool4code.billeteka.FeedbackActivity"
+    android:background="#ffffdf70">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Retroalimentación"
+        android:id="@+id/helpUs_header"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#ff0f0f0f"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Haznos saber tus sugerencias, ideas y comentarios sobre como mejorar Billeteka."
+        android:id="@+id/helpUs"
+        android:textColor="#ff0f0f0f"
+        android:layout_below="@+id/helpUs_header"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Nombre completo"
+        android:id="@+id/helpUs_fullname"
+        android:textStyle="bold"
+        android:layout_above="@+id/helpUs_input_fullname"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/helpUs_input_fullname"
+        android:layout_above="@+id/helpUs_email"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Correo electrónico"
+        android:id="@+id/helpUs_email"
+        android:textStyle="bold"
+        android:layout_above="@+id/helpUs_input_email"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/helpUs_input_email"
+        android:layout_above="@+id/helpUs_tipoRetroalimentacion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tipo de retroalimentación"
+        android:id="@+id/helpUs_tipoRetroalimentacion"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/helpUs_input_tipo"
+        android:entries="@array/feedbacklist"
+        android:spinnerMode="dialog"
+        android:layout_below="@+id/helpUs_tipoRetroalimentacion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Comentario"
+        android:id="@+id/helpUs_comentario"
+        android:textStyle="bold"
+        android:layout_below="@+id/helpUs_input_tipo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/helpUs_input_comentario"
+        android:layout_below="@+id/helpUs_comentario"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:id="@+id/helpUs_button_enviar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/helpUs_input_comentario"
+        android:layout_alignEnd="@+id/helpUs_input_comentario"
+        android:background="#162540"
+        android:textColor="#ffffffff" />
+
+</RelativeLayout>
