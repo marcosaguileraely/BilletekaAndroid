@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +22,6 @@ import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
-import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -58,6 +59,7 @@ public class HomeActivity extends Activity implements OnClickListener{
         buscar.setOnClickListener(this);
         listenerMethod();
 
+        ParseObject.registerSubclass(feedBackModel.class);
         Parse.initialize(this, "mjtQePti6kho4ep0Kq6llUXBX6kd8ZtehD4uev7n", "gUegGvKeUqU1kzQnUeeW4vFUkOZlvulxxDdiB16p");
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
@@ -65,7 +67,7 @@ public class HomeActivity extends Activity implements OnClickListener{
         ParseACL.setDefaultACL(defaultACL, true);
 
         // To track statistics around application
-        ParseAnalytics.trackAppOpened(getIntent());
+        //ParseAnalytics.trackAppOpened(getIntent());
 
         // inform the Parse Cloud that it is ready for notifications
         /*PushService.setDefaultPushCallback(this, HomeActivity.class);
@@ -80,6 +82,22 @@ public class HomeActivity extends Activity implements OnClickListener{
         installation.saveInBackground();*/
 
         new RemoteDataTask().execute();
+
+        anoedittext.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                if(s.length() > 4){
+                  Toast.makeText(context, "Solo se permiten 4 dígitos para el Año.", Toast.LENGTH_LONG).show();
+                }
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
+
+
+
     }
     // RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
@@ -152,8 +170,6 @@ public class HomeActivity extends Activity implements OnClickListener{
         @Override
         protected void onPostExecute(Void result) {
             SQLiteDatabase mydb = getBaseContext().openOrCreateDatabase("billsdb", SQLiteDatabase.OPEN_READWRITE, null);
-            String objectId, dia, mes, ano, denominacion, serie, descripcion, tiempo;
-            String f1_4, f5_7, f8_10, p1_4, p5_7, p8_10, bernardom13, createdAt, updatedAt;
             mProgressDialog.dismiss();
             mydb.execSQL("update main.banknote set serie='' where serie='null'");
             mydb.execSQL("update main.banknote set descripcion='' where descripcion='null'");
@@ -232,6 +248,7 @@ public class HomeActivity extends Activity implements OnClickListener{
             Toast.makeText(context, "Selecciona o ingresa un valor de busqueda.", Toast.LENGTH_LONG).show();
         }
     }
+
     private void listenerMethod() {
         denominacionspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
@@ -283,6 +300,8 @@ public class HomeActivity extends Activity implements OnClickListener{
 
             case R.id.home_action_helpus:
                 Log.d("report", "Ha presionado reportar");
+                Intent goToHelpUs= new Intent(HomeActivity.this, FeedbackActivity.class);
+                startActivity(goToHelpUs);
                 return true;
 
             case R.id.home_action_about:

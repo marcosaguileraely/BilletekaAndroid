@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_list">Billeteka / Resultado</string>
     <string name="action_settings">Acerca de</string>
-    <string name="home_action_book">Libro de Numismatica</string>
+    <string name="home_action_book">Otros catálogos impresos</string>
     <string name="home_action_settings">Acerca de...</string>
     <string name="title_activity_details">DetailsActivity</string>
     <string name="title_activity_list_bills">Billeteka / Resultados</string>
@@ -14,5 +14,6 @@
     <string name="home_action_helpus">Ayudanos a mejorar</string>
     <string name="title_activity_about">Sobre Billeteka</string>
     <string name="title_activity_ads">Publicidad</string>
+    <string name="title_activity_feedback">Retroalimentación</string>
 
 </resources>
