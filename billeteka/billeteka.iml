@@ -74,6 +74,7 @@
     <orderEntry type="library" exported="" name="gridlayout-v7-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="Parse-1.4.3" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="GoogleAdMobAdsSdk-6.4.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="additionnal" level="project" />
     <orderEntry type="library" exported="" name="activation" level="project" />
