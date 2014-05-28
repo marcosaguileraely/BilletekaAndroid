@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
@@ -58,6 +60,10 @@ public class HomeActivity extends Activity implements OnClickListener{
         buscar = (Button) findViewById(R.id.home_button_buscar);
         buscar.setOnClickListener(this);
         listenerMethod();
+
+        AdView adview = (AdView) findViewById(R.id.ad);
+        AdRequest re = new AdRequest();
+        adview.loadAd(re);
 
         ParseObject.registerSubclass(feedBackModel.class);
         Parse.initialize(this, "mjtQePti6kho4ep0Kq6llUXBX6kd8ZtehD4uev7n", "gUegGvKeUqU1kzQnUeeW4vFUkOZlvulxxDdiB16p");

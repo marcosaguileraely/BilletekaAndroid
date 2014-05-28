@@ -20,9 +20,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         googleads:adSize="SMART_BANNER"
+        googleads:testDevices="TEST_EMULATOR, TEST_DEVICE_ID"
         googleads:adUnitId="ca-app-pub-4683857573203155/5229785821" />
-    <!--manifest para adMobs en modo desarrollo"-->
-    <!--googleads:testDevices="TEST_EMULATOR, TEST_DEVICE_ID"-->
+
     <ImageView
         android:layout_width="160dp"
         android:layout_height="100dp"
@@ -30,7 +30,7 @@
         android:background="@drawable/billetekalog"
         android:layout_below="@+id/frameLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="21dp"
         android:baselineAlignBottom="true" />
 
     <TextView
@@ -58,28 +58,15 @@
         android:layout_alignStart="@id/home_box_ano"
         android:layout_marginTop="30dp" />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@id/home_spinner_denominacion"
-        android:layout_below="@id/home_label_denominacion"
-        android:spinnerMode="dropdown"
-        android:entries="@array/denominacioneslist"
-        android:layout_alignRight="@id/home_box_ano"
-        android:layout_alignEnd="@id/home_box_ano"
-        android:layout_alignLeft="@id/home_label_denominacion"
-        android:layout_alignStart="@id/home_label_denominacion" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Año"
         android:id="@id/home_label_ano"
-        android:layout_below="@id/home_label_denominacion"
+        android:layout_centerVertical="true"
         android:layout_alignRight="@id/home_label_mes"
-        android:layout_alignEnd="@id/home_label_mes"
-        android:layout_marginTop="46dp" />
+        android:layout_alignEnd="@id/home_label_mes" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -126,16 +113,27 @@
         android:layout_alignLeft="@id/home_label_mes"
         android:layout_alignStart="@id/home_label_mes" />
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@id/home_spinner_denominacion"
+        android:layout_below="@id/home_label_denominacion"
+        android:layout_above="@id/home_label_ano"
+        android:spinnerMode="dropdown"
+        android:entries="@array/denominacioneslist"
+        android:layout_alignRight="@id/home_box_ano"
+        android:layout_alignEnd="@id/home_box_ano"
+        android:layout_toRightOf="@+id/textView" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="$"
         android:id="@+id/textView"
-        android:paddingBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/home_label_denominacion"
+        android:layout_above="@id/home_label_ano"
         android:layout_alignLeft="@id/home_label_ano"
-        android:layout_alignStart="@id/home_label_ano" />
+        android:layout_alignStart="@id/home_label_ano"
+        android:paddingBottom="5dp" />
 
 </RelativeLayout>
