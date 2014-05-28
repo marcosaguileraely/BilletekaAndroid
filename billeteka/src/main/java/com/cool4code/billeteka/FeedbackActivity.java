@@ -59,7 +59,7 @@ public class FeedbackActivity extends ActionBarActivity implements OnClickListen
         String correo_value= correo_electronico.getText().toString();
         String tipo_value= selecciontipo;
         String comentario_value= comentario.getText().toString();
-        String to = "marcosaguileraely@gmail.com";
+        String to = "billeteka@cool4code.com";
         String subject = "Retroalimentación Billeteka - Usuarios";
         String message = "Envío de retroalimentación App Billeteka."+"\n\nNombre completo: "+nombre_value+"\n\nE-mail: "+correo_value+"\n\nTipo retroalimentación: "+tipo_value+"\n\nComentario: "+comentario_value;
 
