@@ -11,5 +11,7 @@
     <string name="title_activity_about">About us</string>
     <string name="title_activity_ads">Ads and Recomendations</string>
     <string name="title_activity_feedback">Feedback</string>
+    <string name="hello_world">Billeteka</string>
+    <string name="home_action_reset">Billeteka</string>
 
 </resources>
